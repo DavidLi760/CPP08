@@ -3,6 +3,10 @@
 
 # include <iostream>
 # include <string>
+# include <vector>
+# include <exception>
+# include <algorithm>
+# include <iterator>
 
 class TooMuchNumberException : public std::exception
 {
@@ -19,16 +23,17 @@ class NotEnoughNumberException : public std::exception
 class Span
 {
     private:
-        unsigned int max;
+        unsigned int _max;
+        std::vector<int> _numbers;
     public:
         Span();
         Span(unsigned int max);
         Span(const Span &other);
-        Span &operator=(const Span &oher);
+        Span &operator=(const Span &other);
         ~Span();
-        void addNumber(unsigned int nb);
-        
-
+        void addNumber(int nb);
+        int shortestSpan();
+        int longestSpan();
 };
 
 #endif
