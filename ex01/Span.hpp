@@ -32,8 +32,8 @@ class Span
         Span &operator=(const Span &other);
         ~Span();
         void addNumber(int nb);
-        int shortestSpan();
-        int longestSpan();
+        int shortestSpan() const;
+        int longestSpan() const;
 };
 
 #endif
