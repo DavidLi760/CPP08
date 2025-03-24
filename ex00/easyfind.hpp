@@ -4,8 +4,8 @@
 # include <string>
 # include <iostream>
 # include <algorithm>
-# include <vector>
 # include <list>
+# include <vector>
 # include <exception>
 
 class NotFoundException : public std::exception

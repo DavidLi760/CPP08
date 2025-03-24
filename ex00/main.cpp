@@ -11,6 +11,10 @@ int main()
     v.push_back(10);
     v.push_back(21);
     v.push_back(30);
+    std::list<int> l;
+    l.push_back(5);
+    l.push_back(15);
+    l.push_back(25);
 
     try
     {
@@ -21,8 +25,18 @@ int main()
     }
     catch (const std::exception& e)
     {
-        std::cerr << "Exception : " << e.what() << std::endl;
+        std::cout << "Exception : " << e.what() << std::endl;
     }
-
+    try
+    {
+        std::list<int>::iterator it = easyfind(l, 15);
+        std::cout << "Found in list : " << *it << std::endl;
+        it = easyfind(l, 100);
+        std::cout << "Found in list : " << *it << std::endl;
+    }
+    catch (const std::exception& e)
+    {
+        std::cout << "Exception : " << e.what() << std::endl;
+    }
     return 0;
 }
