@@ -53,7 +53,7 @@ int Span::shortestSpan() const
     std::sort(sorted.begin(), sorted.end());
 
     int minimum = sorted[1] - sorted[0];
-    for (unsigned int i = 1; i < sorted.size() - 1; ++i)
+    for (unsigned int i = 1; i < sorted.size() - 1; i++)
     {
         int span = sorted[i + 1] - sorted[i];
         if (span < minimum)
@@ -62,13 +62,33 @@ int Span::shortestSpan() const
     return (minimum);
 }
 
+int find_min(int a, int b)
+{
+    if (a > b)
+        return (b);
+    return (a);
+}
+
+int find_max(int a, int b)
+{
+    if (a > b)
+        return (a);
+    return (b);
+}
+
 int Span::longestSpan() const
 {
     if (_numbers.size() < 2)
-        throw std::logic_error("Not enough numbers to calculate span.");
+        throw NotEnoughNumberException();
 
-    int minValue = *std::min_element(_numbers.begin(), _numbers.end());
-    int maxValue = *std::max_element(_numbers.begin(), _numbers.end());
+    int minValue = *_numbers.begin();
+    int maxValue = *_numbers.begin();
+
+    for (std::vector<int>::const_iterator it = _numbers.begin(); it != _numbers.end(); it++)
+    {
+        minValue = find_min(minValue, *it);
+        maxValue = find_max(maxValue, *it);
+    }
+
     return maxValue - minValue;
 }
-
